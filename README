@@ -1,0 +1,3 @@
+@author Samuel Lampa <samuel.lampa@scilifelab.uu.se>
+
+Convenience tools for working with the arc SRM client (commands such as ngls, or arcls etc)
