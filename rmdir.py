@@ -9,7 +9,7 @@ from optparse import OptionParser
 
 parser = OptionParser()
 parser.add_option("-d", "--directory", dest="dir_to_remove", type="string",
-                  help="Select directory do remove, excluding the domain name")
+                  help="Full path to directory to remove, including 'srm://' and the domain name")
 (options, args) = parser.parse_args()
 dir_to_remove = options.dir_to_remove
 
