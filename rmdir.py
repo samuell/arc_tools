@@ -29,21 +29,21 @@ def remove_recursively(dir_to_remove):
     for line in lines:
         if line is not "":
             bits = line.split(" ")
-            item = bits[0]
-            type = bits[1]
-            if type == "dir":
-                subdir_to_remove = "%s/%s" % (dir_to_remove, item)
-                print "INFO: Navigating down in subdir: %s" % subdir_to_remove
-                remove_recursively(subdir_to_remove)
-            elif type == "file":
-                filepath = os.path.join(dir_to_remove, item)
-                # Don't duplicate logging
-                # print "INFO: Removing file: %s" % filepath
-                exec_command(["ngrm", filepath])
+            if len(bits) > 1:
+                item = bits[0]
+                type = bits[1]
+                item_path = os.path.join(dir_to_remove, item)
+                if type == "dir":
+                    print "Navigating down in subdir: %s" % item_path
+                    remove_recursively(item_path)
+                elif type == "file":
+                    # print "Removing file: %s" % filepath
+                    exec_command(["ngrm", item_path])
         else:
-            print "INFO: No more subfolders here, so deleting folder: " + dir_to_remove
+            print "No more subfolders here, so deleting folder: " + dir_to_remove
             output = exec_command(["ngrm", dir_to_remove])
-            print "INFO: Output: " + output
+            print "Output: " + output
+    exec_command(["ngrm", dir_to_remove])
 
 # ----------------------------------------------------------------------------
 #   Main Loop
