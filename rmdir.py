@@ -39,10 +39,7 @@ def remove_recursively(dir_to_remove):
                 elif type == "file":
                     # print "Removing file: %s" % filepath
                     exec_command(["ngrm", item_path])
-        else:
-            print "No more subfolders here, so deleting folder: " + dir_to_remove
-            output = exec_command(["ngrm", dir_to_remove])
-            print "Output: " + output
+    print "No more subfolders here, so deleting folder: " + dir_to_remove
     exec_command(["ngrm", dir_to_remove])
 
 # ----------------------------------------------------------------------------
