@@ -37,12 +37,13 @@ def remove_recursively(dir_to_remove):
                 remove_recursively(subdir_to_remove)
             elif type == "file":
                 filepath = os.path.join(dir_to_remove, item)
-                print "INFO: Removing file: %s" % filepath
+                # Don't duplicate logging
+                # print "INFO: Removing file: %s" % filepath
                 exec_command(["ngrm", filepath])
         else:
             print "INFO: No more subfolders here, so deleting folder: " + dir_to_remove
-        output = exec_command(["ngrm", dir_to_remove])
-        print "INFO: Output: " + output
+            output = exec_command(["ngrm", dir_to_remove])
+            print "INFO: Output: " + output
 
 # ----------------------------------------------------------------------------
 #   Main Loop
