@@ -34,12 +34,12 @@ def remove_recursively(dir_to_remove):
                 type = bits[1]
                 item_path = os.path.join(dir_to_remove, item)
                 if type == "dir":
-                    print "Navigating down in subdir: %s" % item_path
+                    print("Navigating down in subdir: %s" % item_path)
                     remove_recursively(item_path)
                 elif type == "file":
                     # print "Removing file: %s" % filepath
                     exec_command(["ngrm", item_path])
-    print "No more subfolders here, so deleting folder: " + dir_to_remove
+    print("No more subfolders here, so deleting folder: %s" % dir_to_remove)
     exec_command(["ngrm", dir_to_remove])
 
 # ----------------------------------------------------------------------------
@@ -47,7 +47,7 @@ def remove_recursively(dir_to_remove):
 # ----------------------------------------------------------------------------
 
 if dir_to_remove is None:
-    print "No directory specified. use the -h flag to view options"
+    print("No directory specified. Use the -h flag to view options")
 else:
     remove_recursively(dir_to_remove)
 
